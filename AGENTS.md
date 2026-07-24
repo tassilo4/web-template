@@ -5,19 +5,22 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- END:nextjs-agent-rules -->
 
 <!-- BEGIN:cicada-toolkit-rules -->
-# Preinstalled component toolkit
+# Component library
 
-This project deliberately ships no styled component library — build UI in whatever
-direction the user wants. The headless plumbing is already installed; use it instead
-of adding component or icon libraries:
+This project has its own component library in `components/ui/` — plain files that are
+**yours to edit**. They are built on `@base-ui/react` primitives, composed with `cn()`, and
+themed entirely by CSS-variable tokens in `app/globals.css`.
 
-- **Interactive components:** compose from `@base-ui/react` primitives
-  (Dialog, Menu, Select, Popover, Tooltip, …) and style them with Tailwind classes.
-  Base UI renders unstyled by design — all styling is yours.
+- **Use and extend these primitives** (Button, Input, Card, Dialog, Select, Menu, Tabs,
+  Popover, Tooltip, …). Don't reinvent them, and don't install another component library
+  unless the user asks.
+- **Restyle the whole app by editing the tokens** in `app/globals.css` — colors, radius, and
+  fonts all flow from there. The primitives read tokens, never hardcode a look.
 - **Class composition:** `cn()` from `@/lib/utils` (clsx + tailwind-merge).
 - **Icons:** `HugeiconsIcon` from `@hugeicons/react` with icons imported from
-  `@hugeicons/core-free-icons`, e.g.
-  `<HugeiconsIcon icon={Search01Icon} size={16} color="currentColor" />`.
+  `@hugeicons/core-free-icons`, e.g. `<HugeiconsIcon icon={Search01Icon} strokeWidth={2} />`.
 
-Do not install other component or icon libraries unless the user explicitly asks.
+The design language — palette, type scale, radius, and component conventions — lives in
+**`DESIGN.md`**, implemented as tokens in **`app/globals.css`**. Read `DESIGN.md` before
+building UI, and keep it updated when you change the design.
 <!-- END:cicada-toolkit-rules -->
