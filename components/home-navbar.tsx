@@ -5,10 +5,7 @@ const NAV_LINKS = ["Product", "Solutions", "Resources", "Pricing"]
 export function HomeNavbar() {
   return (
     <header className="relative left-1/2 w-screen -translate-x-1/2">
-      <div
-        className="flex items-center justify-between gap-7 py-4"
-        style={{ paddingInline: "var(--page-gutter)" }}
-      >
+      <div className="page-container flex items-center justify-between gap-7 py-4">
         <div className="flex items-center gap-12">
           <span className="text-lg font-bold tracking-tight text-foreground">
             Acme
